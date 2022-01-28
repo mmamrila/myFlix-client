@@ -1,6 +1,6 @@
 import React from 'react';
 
-export class MainView extends React.Component {
+export class MovieView extends React.Component {
 
   render() {
     const { movie, onBackClick } = this.props;

@@ -6,7 +6,11 @@ export class MainView extends React.Component {
   constructor() {
     super();
     this.state = {
-      movies: [],
+      movies: [
+        { _id: 1, Title: 'Inception', Description: 'desc1...', ImagePath: '...' },
+        { _id: 2, Title: 'The Shawshank Redemption', Description: 'desc2...', ImagePath: '...' },
+        { _id: 3, Title: 'Gladiator', Description: 'desc3...', ImagePath: '...' }
+      ],
       selectedMovie: null
     };
   }
@@ -18,21 +22,23 @@ export class MainView extends React.Component {
   }
 
   render() {
-    const { movies, selectedMovies } = this.state;
+    const { movies, selectedMovie } = this.state;
 
-    if (movies.length === 0)
+    if (movies.length === 0) {
       return <div className="main-view">The list is empty!</div>;
-
-    return (
-      <div className="main-view">
-        {selectedMovie
-          ? <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }} />
-          : movies.map(movie => (
-            <MovieCard key={movie._id} movie={movie} onMovieClick={(newSelectedMovie) => { this.setSelectedMovie(newSelectedMovie) }} />
-          ))
-        }
-      </div>
-    );
+    } else {
+      console.log("movies here!")
+      return (
+        <div className="main-view">
+          {selectedMovie
+            ? <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }} />
+            : movies.map(movie => (
+              <MovieCard key={movie._id} movie={movie} onMovieClick={(newSelectedMovie) => { this.setSelectedMovie(newSelectedMovie) }} />
+            ))
+          }
+        </div>
+      );
+    }
   }
 }
 
