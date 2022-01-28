@@ -6,12 +6,9 @@ export class MainView extends React.Component {
   constructor() {
     super();
     this.state = {
-      movies: [
-        { _id: 1, Title: 'Inception', Description: 'desc1...', ImagePath: '...' },
-        { _id: 2, Title: 'The Shawshank Redemption', Description: 'desc2...', ImagePath: '...' },
-        { _id: 3, Title: 'Gladiator', Description: 'desc3...', ImagePath: '...' }
-      ]
-    }
+      movies: [],
+      selectedMovie: null
+    };
   }
 
   setSelectedMovie(newSelectedMovie) {
@@ -31,23 +28,12 @@ export class MainView extends React.Component {
         {selectedMovie
           ? <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }} />
           : movies.map(movie => (
-            <MovieCard key={movie._id} movie={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie) }} />
+            <MovieCard key={movie._id} movie={movie} onMovieClick={(newSelectedMovie) => { this.setSelectedMovie(newSelectedMovie) }} />
           ))
         }
       </div>
     );
   }
-          
-
-
-export class MainView extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      movies: [...],
-      selectedMovie: null
-    };
-  }
 }
 
-<MovieCard key={movie._id} onMovieClick={(newSelectedMovie) => { this.state.selectedMovie = newSelectedMovie; }} />
+
