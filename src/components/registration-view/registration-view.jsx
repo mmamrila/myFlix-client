@@ -13,24 +13,30 @@ export function RegistrationView(props) {
   };
 
   return (
-    <form>
-      <label>
-        Full Name:
-        <input type="text" value={fullname} onChange={e => setName(e.target.value)} />
-      </label>
-      <label>
-        Email:
-        <input type="text" value={email} onChange={e => setEmail(e.target.value)} />
-      </label>
-      <label>
-        Username:
-        <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
-      </label>
-      <label>
-        Password:
-        <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
-      </label>
-      <button type="submit" onClick={handleSubmit}>Submit</button>
-    </form>
+    <Container>
+      <Row>
+        <Col>
+          <form>
+            <label>
+              Full Name:
+              <input type="text" value={fullname} onChange={e => setName(e.target.value)} />
+            </label>
+            <label>
+              Email:
+              <input type="text" value={email} onChange={e => setEmail(e.target.value)} />
+            </label>
+            <label>
+              Username:
+              <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
+            </label>
+            <label>
+              Password:
+              <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
+            </label>
+            <button type="submit" onClick={handleSubmit}>Submit</button>
+          </form>
+        </Col>
+      </Row>
+    </Container>
   );
 }
