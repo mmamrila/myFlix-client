@@ -21,23 +21,23 @@ export function RegistrationView(props) {
   const validate = () => {
     let isReq = true;
     if (name) {
-      setValues({ ...values, nameErr: 'Name is required');
+      setValues({ ...values, nameErr: 'Name is required' });
       isReq = false;
     }
     if (!username) {
       setValues({ ...values, userNameErr: 'Username Required' });
       isReq = false;
-    } else if {
-      setValues({ ...values, usernameErr: 'Username must be 5 characters long'})
-        isReq = false;
+    } else if (username.length < 5) {
+      setValues({ ...values, userNameErr: 'Username must be 5 characters long' })
+      isReq = false;
     }
     if (!password) {
-        setValues({ ...values, passwordErr: 'Password Required' })
-        isReq = false;
-      } else if (password.length < 6) {
-        setValues({ ...values, passwordErr: 'Password must be 6 characters long' })
-        isReq = false;
-      }
+      setValues({ ...values, passwordErr: 'Password Required' })
+      isReq = false;
+    } else if (password.length < 6) {
+      setValues({ ...values, passwordErr: 'Password must be 6 characters long' })
+      isReq = false;
+    }
     if (!email) {
       setValues({ ...values, emailErr: 'Email Required' });
       isReq = false;
@@ -51,7 +51,7 @@ export function RegistrationView(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Send a request to the server for authentication
-    is(isReq){
+    if (isReq) {
       axios.post('https://dashboard.heroku.com/apps/quiet-ridge-54627/login', {
         Name: name,
         Username: username,
@@ -118,7 +118,7 @@ return (
   </Row>
 
 );
-}
+
 
 RegistrationView.propTypes = {
   register: propTypes.shape({

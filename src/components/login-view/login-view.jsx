@@ -57,7 +57,7 @@ return (
     </Form.Group>
 
     <Form.Group controlId="formPassword">
-      <Form.label>Password</Form.Label>
+      <Form.Label>Password:</Form.Label>
       <Form.Control type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
       {passwordErr && <p>{passwordErr}</p>}
     </Form.Group>
@@ -65,4 +65,3 @@ return (
       Submit</Button>
   </Form>
 )
-}

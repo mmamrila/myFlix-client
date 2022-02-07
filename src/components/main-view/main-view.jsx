@@ -86,7 +86,7 @@ export class MainView extends React.Component {
         <Container>
           <Row className="main-view justify-content-md-center">
 
-            <Route exact path="/" render{() => {
+            <Route exact path="/" render={() => {
               /* If there is no user, the LoginView is rendered. If there is a user logged in, the user details are *passed as a prop to the LoginView*/
               if (!user) return <Col>
                 <LoginView movies={movies} onLoggedIn={user => this.onLoggedIn(user)} />;
@@ -94,18 +94,18 @@ export class MainView extends React.Component {
 
               // Before the movies have been loaded
               if (movies.length === 0) {
-                return <div className="main-view" />;
+                return <div className="main-view" />,
 
-                return movies.map(m => (
-                  <Col md={3} key={m._id}>
-                    <MovieCard movie={m} />
-                  </Col>
-                ))
+                  movies.map(m => (
+                    <Col md={3} key={m._id}>
+                      <MovieCard movie={m} />
+                    </Col>
+                  ))
               }
-            } />
+            }} />
             <Route path="/register" render={() => {
               if (user) return <Redirect to="/" />
-              return <Col lg={8} md{8}>
+              return <Col lg={8} md={8}>
                 <RegistrationView />
               </Col>
             }} />
@@ -118,7 +118,8 @@ export class MainView extends React.Component {
             <Route path={'/users/${user}'} render={({ match, history }) => {
               if (!user) return <Redirect to="/" />
               return <Col>
-                <ProfileView movies={movies} user={user onBackClick={() => history.goBack()} />
+                <ProfileView movies={movies}
+                  onBackClick={() => history.goBack()} />
               </Col>
             }} />
             <Route path={'/user-update/${user}'} render={({ match, history }) => {
@@ -129,7 +130,7 @@ export class MainView extends React.Component {
               </Col>
             }} />
           </Row>
-        </Container
+        </Container>
       </Router>
     );
   }
