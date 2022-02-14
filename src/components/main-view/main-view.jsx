@@ -8,11 +8,12 @@ import Menu from '../NavBar/NavBar';
 
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 
-import { setMovies } from '../../actions/actions';
+import { setMovies, setUser } from '../../actions/actions';
 import { MoviesList } from '../movies-list/movies-list';
 import { LoginView } from '../login-view/login-view';
 import { MovieView } from '../movie-view/movie-view';
 import { RegistrationView } from '../registration-view/registration-view';
+import { ProfileView } from '../profile-view/profile-view';
 import './main-view.scss';
 
 
@@ -82,6 +83,12 @@ class MainView extends React.Component {
 
     return (
       <Router>
+
+        <Route exact path="/register" render={() => {
+          if (user) return <Redirect to="/" />
+          return <RegistrationView />
+        }} />
+
         <Row className='main-view justify-content-md-center'>
           <Route exact path='/' render={() => {
             if (!user) return <Col>
@@ -91,6 +98,25 @@ class MainView extends React.Component {
             return <MoviesList movies={movies} />;
           }} />
         </Row>
+
+        <Route exact path="/users/:username" render={({ match, history }) => {
+          console.log('This is a user')
+
+          if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+          if (movies.length === 0) return <div className="main-view" />;
+          return <Col lg={9}>
+
+            <NavBarView user={user} />
+            <br />
+            <UserView
+              getUser={this.getUser}
+              onBackClick={() => history.goBack()}
+              removeMovie={(_id) => this.onRemoveFavorite(_id)}
+            />
+          </Col>
+
+        }
+        } />
       </Router>
     );
   }
