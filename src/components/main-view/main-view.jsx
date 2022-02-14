@@ -4,7 +4,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 
 import { Row, Container, Col } from 'react-bootstrap';
-import Menu from '../NavBar/NavBar';
+// import Menu from '../NavBar/NavBar';
 
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 
