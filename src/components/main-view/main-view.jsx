@@ -13,7 +13,7 @@ import { MoviesList } from '../movies-list/movies-list';
 import { LoginView } from '../login-view/login-view';
 import { MovieView } from '../movie-view/movie-view';
 import { RegistrationView } from '../registration-view/registration-view';
-import { ProfileView } from '../profile-view/profile-view';
+import { UserProfileView } from './../userProfile-view/userProfile-view';
 import './main-view.scss';
 
 

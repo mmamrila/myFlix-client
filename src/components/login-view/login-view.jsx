@@ -46,22 +46,22 @@ export function LoginView(props) {
         console.log('User does not exist')
       });
   }
+  return (
+    <Form>
+      <Form.Group controlId="formUsername">
+        <Form.Label>Username:</Form.Label>
+        <Form.Control type="text" placeholder="Enter username" value={username} onChange={e => setUsername(e.target.value)} />
+        {usernameErr && <p>{usernameErr}</p>}
+      </Form.Group>
+
+      <Form.Group controlId="formPassword">
+        <Form.Label>Password:</Form.Label>
+        <Form.Control type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
+        {passwordErr && <p>{passwordErr}</p>}
+      </Form.Group>
+      <Button variant="primary" type="submit" onClick={handleSubmit}>
+        Submit</Button>
+    </Form>
+  )
 };
 
-return (
-  <Form>
-    <Form.Group controlId="formUsername">
-      <Form.Label>Username:</Form.Label>
-      <Form.Control type="text" placeholder="Enter username" value={username} onChange={e => setUsername(e.target.value)} />
-      {usernameErr && <p>{usernameErr}</p>}
-    </Form.Group>
-
-    <Form.Group controlId="formPassword">
-      <Form.Label>Password:</Form.Label>
-      <Form.Control type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
-      {passwordErr && <p>{passwordErr}</p>}
-    </Form.Group>
-    <Button variant="primary" type="submit" onClick={handleSubmit}>
-      Submit</Button>
-  </Form>
-)

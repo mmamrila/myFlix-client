@@ -12,17 +12,6 @@ import './index.scss';
 
 const store = createStore(movieApp, devToolsEnhancer());
 
-class MyFlixApplication extends React.Component {
-  render() {
-    return (
-      <Provider store={myFlixStore}>
-        <Container>
-          <MainView />
-        </Container>
-      </Provider>
-    );
-  }
-}
 
 export default App;
 
@@ -45,3 +34,5 @@ const container = document.getElementsByClassName('app-container')[0];
 
 // Tells React to render your app in the root DOM element
 ReactDOM.render(React.createElement(MyFlixApplication), container);
+
+export default MyFlixApplication;
