@@ -81,6 +81,8 @@ class MainView extends React.Component {
   render() {
     let { movies, user } = this.props;
 
+    if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+
     return (
       <Router>
 
